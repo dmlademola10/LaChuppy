@@ -1,0 +1,86 @@
+<p class="text-6xl text-center text-green-600 font-extrabold mt-4 mb-4 text-shadow-lg">Book Us</p>
+<p class="italic text-md text-black text-center font-extrabold">...for more enquiries, please, call 09090328387238.</p>
+<div class="w-full bg-[rgb(217,255,217)] pt-3">
+    <!-- <div #message id="messageBox" [class]="{'text-red-800':true, 'border-red-300':true, 'bg-red-50':true}" class="flex max-w-md m-auto items-center p-4 mb-4 border-t-4 shadow-xl" role="alert">
+        <svg class="shrink-0 w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+            <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z" />
+        </svg>
+        <div class="ms-3 text-sm font-medium">
+            Testing message box.
+        </div>
+        <button type="button" [class]="{'bg-red-50':true, 'text-red-500':true, 'focus:ring-red-400':true,'hover:bg-red-200':true}" class="ms-auto -mx-1.5 -my-1.5 rounded-lg focus:ring-2 p-1.5 inline-flex items-center justify-center h-8 w-8" data-dismiss-target="#messageBox" aria-label="Close">
+            <span class="sr-only">Dismiss</span>
+            <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
+            </svg>
+        </button>
+    </div> -->
+    <form [formGroup]="bookingForm" class="max-w-md p-3 md:p-0 mx-auto mt-4" (ngSubmit)="placeBooking()">
+        <div class="relative z-0 w-full mb-5 group">
+            <input formControlName="name" [class]="{'bg-red-50!':(bookingForm.get('name')?.invalid && bookingForm.get('name')?.touched)}" type="text" name="name" id="name" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
+            <label for="name" class="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 cursor-text select-none z-20 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Name</label>
+            <span class="text-[11px] text-red-800 font-medium hidden" [class]="{'block!': (bookingForm.get('name')?.invalid&&bookingForm.get('name')?.touched)}">
+                @if(bookingForm.get('name')?.errors?.['required']){
+                Name is required.
+                }
+                @if(bookingForm.get('name')?.errors?.['minlength']){
+                Name too short. Min: 3 characters.
+                }
+                @if(bookingForm.get('name')?.errors?.['maxlength']){
+                Name too long. Max: 15 characters.
+                }
+            </span>
+        </div>
+        <div class="relative z-0 w-full mb-5 group">
+            <input formControlName="email" [class]="{'bg-red-50!':(bookingForm.get('email')?.invalid && bookingForm.get('email')?.touched)}" type="email" name="email" id="email" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
+            <label for="email" class="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 cursor-text select-none z-20 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Email address</label>
+            <span class="text-[11px] text-red-800 font-medium hidden" [class]="{'block!': (bookingForm.get('email')?.invalid&&bookingForm.get('email')?.touched)}">
+                @if(bookingForm.get('email')?.errors?.['required']){
+                Email is required to contact you.
+                }
+                @if(bookingForm.get('email')?.errors?.['email']){
+                Email is invalid.
+                }
+            </span>
+        </div>
+        <div class="relative z-0 w-full mb-5 group">
+            <input formControlName="phoneNumber" [class]="{'bg-red-50!':(bookingForm.get('phoneNumber')?.invalid && bookingForm.get('phoneNumber')?.touched)}" type="tel" name="phoneNumber" id="phoneNumber" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
+            <label for="phoneNumber" class="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 cursor-text select-none z-20 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Phone Number</label>
+            <span class="text-[11px] text-red-800 font-medium hidden" [class]="{'block!': (bookingForm.get('phoneNumber')?.invalid&&bookingForm.get('phoneNumber')?.touched)}">
+                @if(bookingForm.get('phoneNumber')?.errors?.['required']){
+                Phone number is required.
+                }
+                @if(bookingForm.get('phoneNumber')?.errors?.['minlength']){
+                Phone numbers have at least 10 digits.
+                }
+                @if(bookingForm.get('phoneNumber')?.errors?.['maxlength']){
+                Phone numbers should not have more than 20 digits.
+                }
+                @if(bookingForm.get('phoneNumber')?.errors?.['pattern']){
+                Phone numbers can only have numerical characters.
+                }
+            </span>
+        </div>
+        <div class="relative z-0 w-full mb-5 group">
+            <label for="eventType" class="block mb-2 text-sm font-medium text-gray-900 ">Event Type</label>
+            <select formControlName="eventType" [class]="{'border-red-300!':(bookingForm.get('eventType')?.invalid && bookingForm.get('eventType')?.touched)}" id="eventType" name="eventType" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
+                <option value="">-- SELECT EVENT --</option>
+                @for(ev of events; track $index){
+                <option [value]="ev">{{ev}}</option>
+                }
+            </select>
+            <span class="text-[11px] text-red-800 font-medium hidden" [class]="{'block!': (bookingForm.get('eventType')?.invalid&&bookingForm.get('eventType')?.touched)}">
+                Select an event above.
+            </span>
+        </div>
+        <div class="relative z-0 w-full mb-5 group">
+            <label for="moreInfo" class="block mb-2 text-sm font-medium text-gray-900 ">More Info</label>
+            <textarea formControlName="moreInfo" [class]="{'border-red-300!':(bookingForm.get('moreInfo')?.invalid && bookingForm.get('moreInfo')?.touched)}" id="moreInfo" rows="4" class="block p-2.5 w-full max-h-[270px] text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500" placeholder="Give more details..."></textarea>
+            <span class="text-[11px] text-red-800 font-medium hidden" [class]="{'block!': (bookingForm.get('moreInfo')?.invalid&&bookingForm.get('moreInfo')?.touched)}">
+                Please, specify event type in the box.
+            </span>
+        </div>
+        <input type="text" name="_gotcha" formControlName="_gotcha" class="hidden" />
+        <button type="submit" class="mt-5 mb-5 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center">Place Booking</button>
+    </form>
+</div>

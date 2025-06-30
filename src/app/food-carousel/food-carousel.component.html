@@ -1,0 +1,19 @@
+<!-- Carousel wrapper -->
+<div class="relative h-65 overflow-hidden md:h-120">
+    @for (item of imgs; track $index) {
+    <div class="hidden duration-700 ease-in-out" [attr.data-carousel-item]="$index===0?'active':''">
+        <img [src]="'/images/foods/'+item.url" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
+        <div class="text-white pl-5 pt-5 pb-5 md:pt-10 md:pb-10 h-full md:h-auto absolute md:border-l-8 border-white top-[100px] w-full md:w-[500px] right-0 bg-black/40 md:bg-black/60 md:backdrop-blur-md">
+            <p class="text-xl">{{item.label}}</p>
+            <p class="italic text-lg">"{{item.desc}}"</p>
+        </div>
+    </div>
+    }
+
+</div>
+<!-- Slider indicators -->
+<div class="absolute z-30 flex -translate-x-1/2 space-x-3 rtl:space-x-reverse bottom-5 left-1/2">
+    @for (img of imgs; track $index) {
+    <button type="button" class="w-3 h-3 rounded-full" [attr.aria-current]="$index===0?true:false" [attr.aria-label]="'Slide'+$index " [attr.data-carousel-slide-to]="$index"></button>
+    }
+</div>

@@ -1,0 +1,33 @@
+<p class="text-6xl text-center text-green-600 font-extrabold mt-4 mb-4 text-shadow-lg">Our Crew</p>
+<p class="italic text-md text-black text-center font-extrabold">...here is the team behind our tremendous success.</p>
+<div class="text-white">
+    @for(person of crewData; track $index){
+    <div class="bg-[rgb(252,237,232)] p-4 mb-6 shadow-2xl flex flex-col md:flex-row md:rounded-3xl md:m-4">
+        <div class="aspect-[3/4] overflow-hidden md:m-4 m-0 w-full md:w-1/4 inline-block rounded-3xl border-6 shadow-2xl hover:border-0">
+            <img [src]="'/images/crew/'+person.url" class="w-full h-full object-cover transform hover:scale-[1.1] transition-all" />
+        </div>
+        <p class="text-lg p-1 border-0 md:border-l-8 md:pl-6 md:ml-6 flex-1">
+            <span class="block">
+                <span class="text-orange-400 font-bold">Name:</span>
+                &nbsp;
+                <span class="text-black font-semibold">{{person.name}}</span>
+            </span>
+            <span class="block">
+                <span class="text-orange-400 font-bold">Post:</span>
+                &nbsp;
+                <span class="text-black font-semibold">{{person.post}}</span>
+            </span>
+            <span class="block">
+                <span class="text-orange-400 font-bold">Date Joined:</span>
+                &nbsp;
+                <span class="text-black font-semibold">{{person.dateJoined}}</span>
+            </span>
+            <span class="block">
+                <span class="text-orange-400 font-bold">About:</span>
+                &nbsp;
+                <span class="text-black font-semibold">{{person.about}}</span>
+            </span>
+        </p>
+    </div>
+    }
+</div>
